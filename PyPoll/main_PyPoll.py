@@ -5,6 +5,7 @@ from statistics import mode
 
 poll_csv = os.path.join('Resources', 'election_data.csv')
 
+# create lists to store the values needed
 vote_count = []
 candidates = []
 
@@ -17,6 +18,11 @@ with open(poll_csv) as csv_file:
     for row in csv_reader:
         vote_count.append(row[0])
         candidates.append(row[2])
+
+# use print(set(candidates)) to find out the unique candidate names
+# in this case it is {"Khan", "Correy", "Li", "O'Tooley"}
+# I am commenting this out so the values dont show in the terminal
+# but needed to find out these values in order to count the votes
 
 total_votes = (len(vote_count))
 

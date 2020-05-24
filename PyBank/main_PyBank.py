@@ -3,6 +3,7 @@ import csv
 
 bank_csv = os.path.join('Resources', 'budget_data.csv')
 
+# create lists to store information needed
 profits = []
 months = []
 
@@ -19,21 +20,22 @@ with open(bank_csv) as csv_file:
 
 sumProfit = sum(profits)
 
-result = [profits[i + 1] - profits[i] for i in range(len(profits)-1)]
+# find the month over month change in profits using a loop
+change = [profits[i + 1] - profits[i] for i in range(len(profits)-1)]
 
-avgChange = round((sum(result)/len(result)), 2)
+avgChange = round((sum(change)/len(change)), 2)
 
-greatestIncrease = max(result)
-increaseIndex = result.index(max(result))
-increaseMonth = (months[increaseIndex + 1])
+greatestIncrease = max(change)
+increaseIndex = change.index(max(change)) # stores the index location of the max change in profits
+increaseMonth = (months[increaseIndex + 1]) # uses the index location above to to grab the correlating month
 
-greatestDecrease = min(result)
-decreaseIndex = result.index(min(result))
+greatestDecrease = min(change)
+decreaseIndex = change.index(min(change))
 decreaseMonth = (months[decreaseIndex + 1])
 
 month_count = len(months)
 
-# Print Results
+# Print changes
 print("Financial Analysis")
 print("------------------------")
 print(f"Total Months: {month_count}")
